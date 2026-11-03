@@ -29,3 +29,43 @@
 .record-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #edf0f2;font-size:12px}.record-row small{display:block;color:#7b8794;margin-top:5px}.record-row em{font-style:normal;color:#987842;font-size:11px}
 .success-message{color:#276749;font-size:12px;background:#edf8f1;padding:12px;border-radius:6px}
 @media(max-width:760px){.investor-sidebar{position:relative;height:auto;overflow:visible}.investor-sidebar nav{grid-template-columns:1fr 1fr}.investor-sidebar nav .subnav-link{padding-left:28px}.portal-home{margin-bottom:15px}.currency-control{flex-wrap:wrap;justify-content:flex-end}.portal-form{grid-template-columns:1fr}.investor-top{align-items:flex-start}.investor-top h1{font-size:20px}}
+
+/* Clear home navigation and touch-friendly investor navigation on phones */
+.main-nav>a:first-child{padding:9px 13px;border:1px solid #e5dccb;border-radius:5px;color:#8b6c39}
+@media(max-width:760px){.main-nav>a:first-child{display:flex;align-items:center;padding:12px 14px;background:#f8f5ef;border:1px solid #e7ddca;border-radius:6px}}
+.investor-sidebar-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.investor-menu-toggle{display:none}
+@media(max-width:760px){
+ .investor-sidebar{position:sticky;top:0;z-index:25;padding:12px 16px 14px;box-shadow:0 5px 18px rgba(16,31,49,.12);border-radius:0 0 12px 12px}
+ .investor-sidebar-head{min-height:42px}
+ .investor-brand{margin:0;gap:9px}
+ .investor-brand .brand-mark{width:34px;height:34px}
+ .investor-menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #526174;border-radius:7px;background:#1b3047;color:#f0dfbd;font:600 12px 'DM Sans',sans-serif;cursor:pointer}
+ .portal-home{margin:10px 0 0;padding:10px 12px;min-height:40px}
+ .investor-label{margin:14px 4px 9px;font-size:9px}
+ .investor-sidebar nav{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;max-height:min(56vh,420px);overflow-y:auto;padding:2px 1px 8px;overscroll-behavior:contain}
+ .investor-sidebar.mobile-nav-open nav{display:grid}
+ .investor-sidebar nav>div{min-width:0;align-content:start;gap:5px}
+ .investor-sidebar nav a,.investor-sidebar nav .subnav-link{display:flex;align-items:center;min-height:44px;padding:10px 9px;border:1px solid rgba(220,230,240,.12);border-radius:7px;background:#192d43;font-size:11px;line-height:1.3;overflow-wrap:anywhere}
+ .investor-sidebar nav a svg{flex:0 0 auto;width:15px;height:15px}
+ .investor-sidebar nav .subnav-link{min-height:38px;padding:8px 8px 8px 13px;margin-left:8px;background:#22384f;color:#c2ccd7;font-size:10px}
+ .investor-sidebar nav a.active,.investor-sidebar nav .subnav-link.active{background:#34485d;border-color:#c5a66b;color:#f0d7a4}
+ .investor-sidebar .sidebar-logout{display:none}
+ .investor-sidebar.mobile-nav-open .sidebar-logout{display:flex;width:100%;margin-top:8px;padding:12px 8px}
+ .investor-main{padding:20px 14px 32px}
+ .investor-top{gap:12px;flex-wrap:wrap;margin-bottom:18px}
+ .investor-top>div:first-child{min-width:0}
+ .investor-top-actions,.currency-control{max-width:100%}
+ .currency-control{gap:7px}
+ .currency-control label{font-size:10px}
+ .currency-control select{min-height:40px}
+ .account-welcome{margin-bottom:14px}
+ .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .investor-stat{min-width:0;padding:12px}
+ .investor-stat span{font-size:10px}
+ .investor-stat strong{font-size:16px;overflow-wrap:anywhere}
+ .investor-grid{gap:12px}
+ .portal-card{padding:16px}
+ .quick-actions a{min-height:48px}
+}
+@media(max-width:380px){.investor-sidebar nav{grid-template-columns:1fr}.investor-top{align-items:flex-start}.currency-control{width:100%;justify-content:flex-start}}
