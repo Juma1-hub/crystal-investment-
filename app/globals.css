@@ -69,3 +69,19 @@
  .quick-actions a{min-height:48px}
 }
 @media(max-width:380px){.investor-sidebar nav{grid-template-columns:1fr}.investor-top{align-items:flex-start}.currency-control{width:100%;justify-content:flex-start}}
+
+/* Mobile investor section visibility and navigation reliability */
+.section-card{display:block;width:100%;min-width:0;visibility:visible;opacity:1;scroll-margin-top:18px}
+.investor-main{min-width:0}
+@media(max-width:760px){
+ .investor-shell{display:flex;flex-direction:column;min-height:100vh}
+ .investor-sidebar{width:100%;flex:0 0 auto;position:sticky;top:0;z-index:40}
+ .investor-sidebar.mobile-nav-open nav{display:grid!important;visibility:visible;opacity:1}
+ .investor-sidebar nav a{touch-action:manipulation;cursor:pointer;position:relative;z-index:1}
+ .investor-main{display:block;width:100%;min-height:50vh;position:relative;z-index:1;padding:18px 14px 36px}
+ .section-card{margin:0 0 20px;padding:16px;display:block!important}
+ .section-card .card-heading,.section-card .portal-form,.section-card .record-list,.section-card .portal-empty{display:block;visibility:visible}
+ .section-card .portal-form{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+ .section-card input,.section-card select,.section-card textarea{width:100%;max-width:100%;min-height:44px}
+ .section-card button{min-height:44px;touch-action:manipulation}
+}
