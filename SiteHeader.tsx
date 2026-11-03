@@ -1,0 +1,6 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X, Gem, ChevronDown } from "lucide-react";
+const links = [{label:"About",href:"/about"},{label:"Divisions",href:"/divisions"},{label:"Opportunities",href:"/opportunities"},{label:"Our Approach",href:"/approach"},{label:"Insights",href:"/insights"},{label:"Contact",href:"/contact"}];
+export default function SiteHeader(){ const [open,setOpen]=useState(false); return <header className="site-header"><div className="container nav-wrap"><Link href="/" className="brand" onClick={()=>setOpen(false)}><span className="brand-mark"><Gem size={23}/></span><span><strong>CRYSTAL</strong><small>INVESTMENTS</small></span></Link><button className="menu-toggle" aria-label="Toggle menu" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button><nav className={open?"main-nav is-open":"main-nav"}>{links.map(l=><Link key={l.href} href={l.href} onClick={()=>setOpen(false)}>{l.label}</Link>)}<Link className="nav-login" href="/login" onClick={()=>setOpen(false)}>Investor Login</Link><Link className="button button-gold nav-cta" href="/register" onClick={()=>setOpen(false)}>Become an Investor <span>↗</span></Link></nav></div></header> }
