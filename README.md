@@ -1,22 +1,36 @@
-# Crystal Investments — Frontend
+# CRYSTAL INVESTMENTS — Frontend
 
-A responsive Next.js frontend starter for CRYSTAL INVESTMENTS. This is a separate project from Supa AI.
+Corporate website frontend for CRYSTAL INVESTMENTS.
 
-## Run locally
-1. Install Node.js 20.9 or newer.
-2. In this folder run `npm install`.
-3. Run `npm run dev`.
-4. Open http://localhost:3000.
+## Included
+- Responsive corporate homepage and navigation
+- About, investment divisions, opportunities and investment approach
+- Expanded global investment opportunities and sector explanations
+- News, research and insights hub
+- Global investment reach, portfolio, contact and investor access pages
+- Navy, champagne-gold and white visual identity
 
-## Deploy
-Push this project to the `main` branch of the Crystal Investments GitHub repository and import that repository into Vercel. Framework preset: Next.js. No environment variables are required for this frontend preview.
+## Technology
+- Next.js 15.5.28
+- React 19.1.7
+- TypeScript
+- Tailwind-free custom CSS
 
-## Current stage
-This is a frontend-only first milestone. Forms and investor access are visual previews only; no authentication, data storage, payment collection, investment acceptance or transaction processing is enabled. Connect secure backend services only after the relevant company, legal, regulatory and operational approvals are in place.
+## Local development
+```bash
+npm install
+npm run dev
+```
 
-## Branding
-Crystal Investments — “Investing Today. Building Tomorrow.”
-Palette: midnight navy, champagne gold and white.
-## Dependency security update
+## Production build
+```bash
+npm run build
+```
 
-This frontend uses patched releases: Next.js 15.5.28, React 19.1.7, and React DOM 19.1.7. Keep these dependencies updated and redeploy after dependency changes.
+## Deployment
+Import the GitHub repository into Vercel. Set the project root directory to `./` if the files are placed at the repository root. Use the default Next.js framework settings.
+
+## Important implementation notes
+This is the public-facing frontend. Investor authentication, contact form submission, opportunity applications, payment handling, account records and administrative workflows require secure backend integration before use. Do not collect or accept investor funds through this frontend until the required legal, regulatory, banking and operational approvals and controls are in place.
+
+The Insights page provides an editorial structure and coverage topics; actual articles should be added with accurate publication dates and reviewed content. The Opportunities page describes investment themes and possible transaction structures; it does not advertise a specific live offer or claim ownership of a listed asset.
