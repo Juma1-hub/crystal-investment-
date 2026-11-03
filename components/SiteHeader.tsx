@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Menu, X, Gem } from "lucide-react";
-const links = [{label:"About",href:"/about"},{label:"Divisions",href:"/divisions"},{label:"Opportunities",href:"/opportunities"},{label:"Our Approach",href:"/approach"},{label:"Insights",href:"/insights"},{label:"Contact",href:"/contact"}];
+const links = [{label:"Home",href:"/"},{label:"About",href:"/about"},{label:"Divisions",href:"/divisions"},{label:"Opportunities",href:"/opportunities"},{label:"Our Approach",href:"/approach"},{label:"Insights",href:"/insights"},{label:"Contact",href:"/contact"}];
 export default function SiteHeader(){
  const [open,setOpen]=useState(false); const [signedIn,setSignedIn]=useState(false); const router=useRouter();
  useEffect(()=>{const sync=()=>setSignedIn(localStorage.getItem("crystal_demo_session")==="active");sync();window.addEventListener("storage",sync);window.addEventListener("crystal-session-change",sync);return()=>{window.removeEventListener("storage",sync);window.removeEventListener("crystal-session-change",sync)}},[]);
