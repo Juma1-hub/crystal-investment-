@@ -17,3 +17,6 @@ This is a frontend-only first milestone. Forms and investor access are visual pr
 ## Branding
 Crystal Investments — “Investing Today. Building Tomorrow.”
 Palette: midnight navy, champagne gold and white.
+## Dependency security update
+
+This frontend uses patched releases: Next.js 15.5.28, React 19.1.7, and React DOM 19.1.7. Keep these dependencies updated and redeploy after dependency changes.
