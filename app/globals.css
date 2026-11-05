@@ -339,3 +339,35 @@
  .investor-sidebar nav .mobile-home-link{grid-column:1}
  .wordmark-card{width:calc(50% - 12px)}
 }
+
+
+/* Final interaction, imagery and colour refinements */
+.main-nav>a:first-child{padding:9px 12px;border-radius:999px;background:#f0f5f7;color:#187b87;font-weight:800}
+.main-nav>a:first-child:hover{background:#e1f0ef;color:#12636c}
+.logo-orb{width:88px;height:72px;border-radius:14px;padding:9px;background:#fff;border:1px solid #e4e8ed;box-shadow:0 5px 18px rgba(27,45,67,.07)}
+.regulator-grid .logo-orb{width:88px;height:72px;border-radius:14px}
+.logo-orb img{width:100%;height:100%;object-fit:contain;display:block;image-rendering:auto}
+.logo-fallback{font-size:10px!important;line-height:1.2!important;color:#41546a!important;letter-spacing:0!important}
+.wordmark-card{width:136px;gap:9px}
+.wordmark-card span{max-width:136px;color:#526174}
+.division-photo{height:250px;background-size:cover;background-position:center 45%;background-repeat:no-repeat;image-rendering:auto}
+.division-photo:before{background:linear-gradient(90deg,rgba(12,25,43,.52) 0%,rgba(12,25,43,.24) 55%,rgba(12,25,43,.06) 100%)}
+.division-photo strong{font-size:clamp(20px,2.4vw,27px);text-shadow:0 2px 14px rgba(0,0,0,.38)}
+.division-detail-head h2{color:#167f86}
+.division-detail-columns h3{color:#b07b36}
+.division-tone-2 .division-detail-head h2{color:#5b8a3c}.division-tone-2 .division-detail-columns h3{color:#b47b32}
+.division-tone-3 .division-detail-head h2{color:#4975a8}.division-tone-3 .division-detail-columns h3{color:#9a6eaa}
+.division-tone-4 .division-detail-head h2{color:#9a6a36}.division-tone-4 .division-detail-columns h3{color:#477b72}
+.division-tone-5 .division-detail-head h2{color:#287c9c}.division-tone-5 .division-detail-columns h3{color:#b47b32}
+.division-tone-6 .division-detail-head h2{color:#7459a6}.division-tone-6 .division-detail-columns h3{color:#188c91}
+.division-tone-7 .division-detail-head h2{color:#267b72}.division-tone-7 .division-detail-columns h3{color:#a77a31}
+.division-tone-8 .division-detail-head h2{color:#9b647e}.division-tone-8 .division-detail-columns h3{color:#4b7b9b}
+.section-head h2{color:#245b70}
+.content-narrow h2{color:#286f79}
+.page-hero h1{ text-wrap:balance }
+@media(max-width:760px){
+ .main-nav>a:first-child{display:block;text-align:left;background:transparent;padding:0;border-radius:0;color:#187b87}
+ .division-photo{height:210px;background-position:center}
+ .wordmark-card{width:calc(50% - 14px);max-width:150px}
+ .logo-orb,.regulator-grid .logo-orb{width:82px;height:66px}
+}

@@ -1,12 +1,12 @@
 const sectorImages = [
-  "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1649822825476-70af6471d30f?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=3200&q=95",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=95"
+  "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1649822825476-70af6471d30f?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=2400&q=90&fit=crop",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=90&fit=crop"
 ];
 const items = [
   { name: "Energy & Petroleum", intro: "Energy systems and petroleum value chains that support homes, businesses, industry and transport.", invest: "We evaluate power generation, renewable and transitional energy projects, grid and storage infrastructure, petroleum-related businesses, distribution networks and energy services. Depending on the opportunity, participation may take the form of project equity, infrastructure partnerships, operating-company investment or structured financing.", factors: "Resource or fuel supply, offtake contracts, technology, operating costs, regulatory framework, environmental and social impact, safety, project delivery and commodity-price exposure." },
@@ -22,7 +22,7 @@ const items = [
 export default function Divisions() {
   return <><section className="page-hero"><div className="container"><div className="eyebrow">Our investment divisions</div><h1>Eight areas of focus. One global perspective.</h1><p>Crystal Investments evaluates relevant opportunities across international markets, selecting sectors and transactions through research, due diligence and disciplined assessment.</p></div></section>
     <section className="section"><div className="container"><div className="section-head"><div className="eyebrow">Our investment universe</div><h2>What we invest in and how we approach each sector.</h2><p>Our divisions organise the industries and asset classes we research. The investment structure is selected according to the nature of each opportunity, the risks involved and the applicable legal framework.</p></div>
-      <div className="division-detail-list">{items.map((item, index) => <article className="division-detail" key={item.name}><div className="division-photo" style={{backgroundImage:`linear-gradient(90deg,rgba(12,25,43,.78),rgba(12,25,43,.12)),url(${sectorImages[index]})`}}><strong>{item.name}</strong></div><div className="division-detail-head"><h2>{item.name}</h2></div><p className="division-intro">{item.intro}</p><div className="division-detail-columns"><div><h3>How we invest</h3><p>{item.invest}</p></div><div><h3>What we assess</h3><p>{item.factors}</p></div></div></article>)}</div>
+      <div className="division-detail-list">{items.map((item, index) => <article className={`division-detail division-tone-${index+1}`} key={item.name}><div className="division-photo" style={{backgroundImage:`url(${sectorImages[index]})`}}><strong>{item.name}</strong></div><div className="division-detail-head"><h2>{item.name}</h2></div><p className="division-intro">{item.intro}</p><div className="division-detail-columns"><div><h3>How we invest</h3><p>{item.invest}</p></div><div><h3>What we assess</h3><p>{item.factors}</p></div></div></article>)}</div>
       <div className="disclaimer" style={{marginTop:32}}>The descriptions above explain our investment focus and possible methods of participation. They do not represent a claim of current ownership, completed transactions or a presently available investment offer. Each transaction is considered individually and is subject to due diligence, approvals, eligibility requirements and definitive documentation.</div>
     </div></section></>;
 }
