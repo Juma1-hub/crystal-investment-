@@ -1,12 +1,12 @@
 const sectorImages = [
-  "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1649822825476-70af6471d30f?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=2200&q=90",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90"
+  "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1649822825476-70af6471d30f?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=3200&q=95",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=95"
 ];
 const items = [
   { name: "Energy & Petroleum", intro: "Energy systems and petroleum value chains that support homes, businesses, industry and transport.", invest: "We evaluate power generation, renewable and transitional energy projects, grid and storage infrastructure, petroleum-related businesses, distribution networks and energy services. Depending on the opportunity, participation may take the form of project equity, infrastructure partnerships, operating-company investment or structured financing.", factors: "Resource or fuel supply, offtake contracts, technology, operating costs, regulatory framework, environmental and social impact, safety, project delivery and commodity-price exposure." },
