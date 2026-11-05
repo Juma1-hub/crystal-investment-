@@ -1,0 +1,3 @@
+"use client";
+import {useEffect,useState} from "react";
+export default function SiteContentText({field,fallback}:{field:string;fallback:string}){const [value,setValue]=useState(fallback);useEffect(()=>{const sync=()=>{try{const data=JSON.parse(localStorage.getItem("crystal_site_content")||"{}");setValue(typeof data[field]==="string"&&data[field].trim()?data[field]:fallback)}catch{setValue(fallback)}};sync();window.addEventListener("storage",sync);window.addEventListener("crystal-site-content-change",sync);return()=>{window.removeEventListener("storage",sync);window.removeEventListener("crystal-site-content-change",sync)}},[field,fallback]);return <>{value}</>}
