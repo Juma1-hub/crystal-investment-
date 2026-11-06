@@ -371,3 +371,33 @@
  .wordmark-card{width:calc(50% - 14px);max-width:150px}
  .logo-orb,.regulator-grid .logo-orb{width:82px;height:66px}
 }
+
+
+/* Final corrections: restore the eight homepage division photographs after editorial card resets. */
+.cards .sector-card{position:relative;isolation:isolate;overflow:hidden;display:flex;min-height:230px;background-repeat:no-repeat;background-size:cover;background-position:center;color:#fff;border:0;padding:24px 22px;background-color:#172943}
+.cards .sector-card-1{background-image:url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-2{background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-3{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-4{background-image:url('https://images.unsplash.com/photo-1649822825476-70af6471d30f?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-5{background-image:url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-6{background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-7{background-image:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card-8{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=92')}
+.cards .sector-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,20,34,.88) 0%,rgba(8,20,34,.34) 100%)}
+.cards .sector-card h3,.cards .sector-card p{position:relative;z-index:1;color:#fff}
+
+/* Compact circular partner and regulator logo marks on desktop and mobile. */
+.logo-orb,.regulator-grid .logo-orb{width:48px;height:48px;min-width:48px;border-radius:50%;padding:6px;overflow:hidden;background:#fff;border:1px solid #e2e6eb;box-shadow:0 3px 10px rgba(27,45,67,.07)}
+.logo-orb img{width:100%;height:100%;object-fit:contain;display:block}
+.wordmark-card{width:104px;gap:7px}
+.wordmark-card span{max-width:104px;font-size:9px;line-height:1.35;text-align:center}
+
+.admin-quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.admin-quick-links button{display:flex;align-items:center;gap:12px;padding:14px 15px;text-align:left;border:1px solid #e6e2d9;background:#fff;color:#806638;cursor:pointer}
+.admin-quick-links button>span:nth-child(2){display:grid;gap:4px;flex:1}
+.admin-quick-links b{font-size:12px;color:#34485c}
+.admin-quick-links small{font-size:10px;line-height:1.5;color:#778596}
+.admin-quick-links button>span:last-child{font-size:19px}
+.admin-site-manager .save-success{color:#28734b}
+.admin-site-manager .save-error{color:#a33f37}
+@media(max-width:680px){.admin-quick-links{grid-template-columns:1fr}.logo-orb,.regulator-grid .logo-orb{width:48px;height:48px;min-width:48px}.wordmark-card{width:calc(50% - 12px);max-width:120px}}
