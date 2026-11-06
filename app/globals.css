@@ -433,3 +433,28 @@
 .site-footer .wordmark-card{width:104px;max-width:104px;gap:7px}
 .site-footer .wordmark-card span{max-width:104px;font-size:9px;line-height:1.3;text-align:center}
 @media(max-width:680px){.site-footer .logo-orb,.site-footer .regulator-grid .logo-orb{width:44px;height:44px;min-width:44px;padding:5px}.site-footer .wordmark-card{width:calc(33.333% - 10px);max-width:96px}.site-footer .wordmark-card span{max-width:96px;font-size:8px}}
+
+
+/* Footer logo visibility: show a brand-coloured circular fallback beneath each remote logo. */
+.site-footer .logo-orb{position:relative;isolation:isolate;padding:0!important}
+.site-footer .logo-orb img{position:relative;z-index:2;width:100%;height:100%;padding:7px;box-sizing:border-box;background:transparent}
+.site-footer .logo-mark-fallback{position:absolute;z-index:1;inset:0;display:flex!important;align-items:center;justify-content:center;border-radius:50%;font-size:10px;font-weight:850;letter-spacing:-.35px;line-height:1;text-align:center;overflow:hidden}
+.site-footer .logo-orb.logo-unavailable .logo-mark-fallback{display:flex!important}
+@media(max-width:680px){.site-footer .logo-mark-fallback{font-size:9px}}
+
+/* Global portfolio strategy section: strategic themes, not claims of existing holdings. */
+.portfolio-intro{max-width:790px;margin:0 auto 34px;text-align:center}
+.portfolio-intro h2,.portfolio-reporting h2{font-size:clamp(25px,3vw,36px);line-height:1.15;color:#1d3045;margin:10px 0 12px}
+.portfolio-intro p,.portfolio-reporting p{font-size:14px;line-height:1.8;color:#667487}
+.portfolio-theme-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 30px;border-top:1px solid #e4e8ed}
+.portfolio-theme{position:relative;padding:27px 8px 29px 0;border-bottom:1px solid #e4e8ed}
+.portfolio-theme-index{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#b18a4b}
+.portfolio-theme h3{font-size:17px;line-height:1.35;color:#24384d;margin:10px 0}
+.portfolio-theme p{font-size:12px;line-height:1.75;color:#6b7888;margin:0}
+.portfolio-reporting{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin:58px 0 38px;padding:34px 0;border-top:1px solid #e4e8ed;border-bottom:1px solid #e4e8ed}
+.portfolio-reporting-list{display:grid;gap:0}
+.portfolio-reporting-list span{padding:13px 0;border-bottom:1px solid #e9edf1;font-size:12px;color:#3d5064}
+.portfolio-reporting-list span:last-child{border-bottom:0}
+.portfolio-disclosure{margin-top:20px}
+@media(max-width:850px){.portfolio-theme-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}.portfolio-reporting{gap:26px}}
+@media(max-width:600px){.portfolio-theme-grid,.portfolio-reporting{grid-template-columns:1fr}.portfolio-reporting{margin:40px 0 28px;padding:28px 0}.portfolio-theme{padding:22px 0}}
