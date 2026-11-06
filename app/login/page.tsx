@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
-type InvestorProfile = { fullName?: string; email?: string; password?: string; [key: string]: unknown };
+type InvestorProfile = { fullName?: string; email?: string; password?: string; currency?: string; [key: string]: unknown };
 export default function Login(){
   const router=useRouter();
   const [error,setError]=useState("");
@@ -20,7 +20,7 @@ export default function Login(){
       // Older local demo profiles did not store a password. On their first sign-in,
       // accept the supplied password and save it for subsequent sign-ins.
       if(investor.password && investor.password!==password){setError("The password is incorrect. Please try again.");return;}
-      const updated={...investor,password:investor.password||password};
+      const updated:InvestorProfile={...investor,password:investor.password||password};
       localStorage.setItem("crystal_demo_investor",JSON.stringify(updated));
       localStorage.setItem("crystal_investor_profiles",JSON.stringify([...registry.filter(p=>String(p.email||"").toLowerCase()!==email),updated]));
       localStorage.setItem("crystal_account_currency",String(updated.currency||"KES"));
