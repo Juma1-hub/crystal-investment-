@@ -77,3 +77,35 @@ Do not promote a normal investor account. Only grant this role to the designated
 The browser cannot create earnings or commissions. A trusted server-side process must insert an earning and mark it `verified` only after the underlying realised investment earnings have been confirmed. The database trigger then creates one 20% commission for the referrer. Pending commissions can be approved or voided by an authorised administrator. Marking a commission as paid must be performed by the trusted payment/distribution workflow, not by a browser update. Deposits, principal, projected returns and unverified figures do not generate commissions.
 
 The referral tables and workflow are prepared here; the existing deposits, allocations and realised earnings are not yet integrated into a trusted end-to-end financial ledger. Do not manually insert fictional earnings to test commissions.
+
+
+## Central dashboard data and administrator referral-code controls
+
+After migrations `202611110001_initial_investor_profiles.sql` and
+`202611110002_referral_program.sql`, run:
+
+`supabase/migrations/202611110003_central_backend_and_referral_admin.sql`
+
+This migration creates central tables and protected RPCs for deposit/withdrawal
+requests, investment allocations, market-condition updates, site configuration,
+and administrator audit records. It also adds the Supa Admin / permitted Junior
+Admin RPC used to change a client's referral code. Referral code changes are
+unique, update the referral relationship's displayed code, and create an audit
+entry. Historical commissions are not rewritten.
+
+The investor portal no longer reads/writes browser localStorage for account
+currency or investor financial record loading. Deposit and withdrawal request
+submission is routed through authenticated Supabase RPCs. The corresponding
+financial request tables are read-only to clients; status changes must be made
+through trusted administrator workflows.
+
+Market condition publishing and platform settings / website content saving
+now use Supabase RPCs and database tables instead of browser localStorage.
+
+Important: the existing AdminConsole workspace state and the portfolio
+allocation manager still contain legacy browser-storage paths in this version.
+They must be migrated to the new database tables and secure administrator
+workflows before claiming the entire admin workspace is fully centralised.
+Do not enable live payment, deposit settlement, withdrawal payout, or investment
+activation until the corresponding server-side review, ledger reconciliation,
+and regulatory controls are implemented and tested.
