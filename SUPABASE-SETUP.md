@@ -49,36 +49,3 @@ After saving the Vercel environment variables and running the SQL migration, red
 ## Scope of this connection
 
 This phase connects Supabase Auth and basic investor profiles. Deposits, withdrawals, investment allocations, distributions, investor balances, admin roles, admin records, website settings and market data have not yet been migrated from browser storage. The investor dashboard therefore does not display browser-stored figures as live financial balances, and deposit/withdrawal actions remain unavailable. Payment integration is a separate next phase and must remain disabled until regulatory and provider approvals are confirmed.
-
-
-## 5. Financial records and administrator foundation
-
-The next migration is `supabase/migrations/202611110002_financial_and_admin_foundation.sql`.
-Run it only after reviewing the SQL and confirming that the first profile migration is already applied.
-
-It creates the database foundation for:
-- Deposit and withdrawal requests.
-- Investment opportunities and individual allocations.
-- Currency-specific investor ledger entries.
-- Distributions and investor documents.
-- Supa Admin / Junior Admin memberships.
-- Administrative audit logs and platform settings.
-
-Row Level Security is enabled on these tables. Investors can access only their own financial records; administrator actions require an active row in `admin_memberships`. Only a Supa Admin can manage administrator memberships through the database policies. No user is automatically promoted by this migration.
-
-### Bootstrap the first Supa Admin
-
-After the migration is applied, obtain the UUID of the intended primary administrator from **Authentication → Users**. Then run the following SQL after replacing `PASTE_AUTH_USER_UUID` with that exact UUID:
-
-```sql
-insert into public.admin_memberships (user_id, role, status)
-values ('PASTE_AUTH_USER_UUID', 'Supa Admin', 'Active')
-on conflict (user_id) do update
-set role = 'Supa Admin', status = 'Active', updated_at = now();
-```
-
-Do not bootstrap an account you do not control. Keep the Supa Admin account protected with a strong unique password and multi-factor authentication where available.
-
-### Important implementation boundary
-
-This migration establishes the database schema and row-access policies. The current Admin Management Centre screens still contain browser-storage prototype logic and must be migrated to authenticated Supabase queries and server-enforced permissions before administrator workflows are treated as live. The Junior Admin interface must expose only the permissions assigned to that role. Payment-provider callbacks, ledger posting, approval transitions and balance calculations must be implemented server-side before accepting real funds. This ZIP does not enable live payments or move money.
