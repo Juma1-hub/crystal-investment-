@@ -1,0 +1,25 @@
+"use client";
+import {useEffect,useMemo,useState} from "react";
+import {Copy,Users,Wallet,CheckCircle2,Clock3,Share2} from "lucide-react";
+import {getSupabaseBrowserClient} from "@/lib/supabase";
+
+type ReferralRow={id:string;referred_investor_id:string;created_at:string};
+type CommissionRow={id:string;referred_investor_id:string;eligible_earnings:number;commission_amount:number;currency:string;status:string;created_at:string};
+export default function InvestorReferralPanel(){
+ const [code,setCode]=useState("");const [referrals,setReferrals]=useState<ReferralRow[]>([]);const [commissions,setCommissions]=useState<CommissionRow[]>([]);const [notice,setNotice]=useState("");const [loading,setLoading]=useState(true);const [investedCount,setInvestedCount]=useState(0);
+ useEffect(()=>{let active=true;(async()=>{const supabase=getSupabaseBrowserClient();if(!supabase){if(active)setLoading(false);return;}const {data:{user}}=await supabase.auth.getUser();if(!user){if(active)setLoading(false);return;}const [p,r,c]=await Promise.all([
+  supabase.from("investor_profiles").select("referral_code").eq("id",user.id).maybeSingle(),
+  supabase.from("referral_relationships").select("id,referred_investor_id,created_at").eq("referrer_id",user.id).order("created_at",{ascending:false}),
+  supabase.from("referral_commissions").select("id,referred_investor_id,eligible_earnings,commission_amount,currency,status,created_at").eq("referrer_id",user.id).order("created_at",{ascending:false})
+ ]);if(!active)return;setCode(p.data?.referral_code||"");const referralRows=(r.data||[]) as ReferralRow[];const commissionRows=(c.data||[]) as CommissionRow[];setReferrals(referralRows);setCommissions(commissionRows);setInvestedCount(new Set(commissionRows.map(x=>x.referred_investor_id)).size);setLoading(false);})();return()=>{active=false}},[]);
+ const link=typeof window!="undefined"&&code?`${window.location.origin}/register?ref=${encodeURIComponent(code)}`:"";
+ const totals=useMemo(()=>["KES","USD","GBP"].map(currency=>({currency,pending:commissions.filter(x=>x.currency===currency&&x.status==="pending").reduce((s,x)=>s+Number(x.commission_amount),0),approved:commissions.filter(x=>x.currency===currency&&["approved","paid"].includes(x.status)).reduce((s,x)=>s+Number(x.commission_amount),0)})),[commissions]);
+ async function copy(){try{await navigator.clipboard.writeText(link);setNotice("Referral link copied.");}catch{setNotice(link);}}
+ return <div className="portal-card section-card referral-panel"><div className="card-heading"><div><span className="eyebrow">INVESTOR REFERRALS</span><h2>Referral programme</h2></div><Share2 size={22}/></div><p className="section-intro">Share your referral link. When a referred investor makes an eligible investment and earns verified realised returns, you receive a 20% commission on those verified earnings.</p>
+  <div className="referral-link-box"><div><small>YOUR REFERRAL CODE</small><strong>{loading?"Loading…":code||"—"}</strong><span>{link||"Your personal referral link will appear here."}</span></div><button type="button" className="button button-gold" onClick={copy} disabled={!link}><Copy size={15}/> Copy link</button></div>
+  <div className="referral-stats"><article><Users size={18}/><small>Total referrals</small><strong>{loading?"—":referrals.length}</strong></article><article><Wallet size={18}/><small>Referred investors with verified earnings</small><strong>{loading?"—":investedCount}</strong></article><article><Clock3 size={18}/><small>Commission entries</small><strong>{loading?"—":commissions.length}</strong></article></div>
+  <section className="referral-commission-summary"><h3>Commission summary</h3><p>Amounts remain separated by account currency.</p><div className="referral-currency-grid">{totals.map(t=><article key={t.currency}><b>{t.currency}</b><span>Pending: {t.pending.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</span><span>Approved / paid: {t.approved.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</span></article>)}</div></section>
+  <section className="referral-history"><h3>Referral commission history</h3>{loading?<p className="portal-empty">Loading referral records…</p>:commissions.length===0?<p className="portal-empty">Your eligible referral commissions will appear here after referred investors generate verified earnings.</p>:commissions.map(c=><div className="record-row" key={c.id}><span><b>{c.currency} {Number(c.commission_amount).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</b><small>20% of {c.currency} {Number(c.eligible_earnings).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} verified earnings · {new Date(c.created_at).toLocaleDateString()}</small></span><em>{c.status}</em></div>)}</section>
+  {notice&&<p className="success-message" role="status">{notice}</p>}<div className="referral-note"><CheckCircle2 size={16}/><span>Commissions are calculated only from verified realised earnings. Deposits, invested principal and unverified projections do not generate commission.</span></div>
+ </div>
+}
