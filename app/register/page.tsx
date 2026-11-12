@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase";
 
 export default function Register(){
@@ -9,8 +9,6 @@ export default function Register(){
   const [error,setError]=useState("");
   const [message,setMessage]=useState("");
   const [busy,setBusy]=useState(false);
-  const [referralCode,setReferralCode]=useState("");
-  useEffect(()=>{const value=new URLSearchParams(window.location.search).get("ref")||"";setReferralCode(value.trim().toUpperCase());},[]);
   async function submit(e:FormEvent<HTMLFormElement>){
     e.preventDefault();const formElement=e.currentTarget;setError("");setMessage("");setBusy(true);
     const supabase=getSupabaseBrowserClient();
@@ -28,7 +26,7 @@ export default function Register(){
       email,password,
       options:{
         emailRedirectTo:`${window.location.origin}/login`,
-        data:{full_name:fullName,phone,country,preferred_currency:currency,terms_accepted_at:new Date().toISOString(),referral_code:referralCode}
+        data:{full_name:fullName,phone,country,preferred_currency:currency,terms_accepted_at:new Date().toISOString()}
       }
     });
     setBusy(false);
@@ -37,5 +35,5 @@ export default function Register(){
     setMessage("Your registration has been received. Please check your email and confirm your address before signing in.");
     formElement.reset();
   }
-  return <section className="section section-soft"><div className="container"><div className="form-shell"><div className="eyebrow">Investor registration</div><h2>Begin your investment journey.</h2><p>Register your investor profile and access your account dashboard.</p><form className="form-grid" onSubmit={submit}><label>Full name<input name="fullName" type="text" placeholder="Your full name" autoComplete="name" required/></label><label>Email address<input name="email" type="email" placeholder="you@example.com" autoComplete="email" required/></label><label>Create password<input name="password" type="password" minLength={8} autoComplete="new-password" placeholder="At least 8 characters" required/></label><label>Phone number<input name="phone" type="tel" placeholder="+254 ..." autoComplete="tel" required/></label><label>Country of residence<input name="country" type="text" placeholder="Country" autoComplete="country-name" required/></label><label>Referral code (optional)<input name="referralCode" type="text" value={referralCode} onChange={e=>setReferralCode(e.target.value.toUpperCase())} placeholder="Enter referral code" autoCapitalize="characters"/></label><label>Preferred account currency<select name="currency" defaultValue="KES"><option value="KES">KES</option><option value="USD">USD</option><option value="GBP">GBP</option></select></label><label className="terms-check"><input type="checkbox" name="terms" required/><span>I have read and agree to the <Link href="/terms">Terms &amp; Conditions</Link> and acknowledge the investment risk disclosures.</span></label><button type="submit" className="button button-gold" disabled={busy}>{busy?"Submitting…":"Submit registration details"}</button></form>{error&&<p role="alert" className="form-note">{error}</p>}{message&&<p role="status" className="success-message">{message}</p>}<p className="form-note">Already have an account? <Link href="/login" style={{color:'#987842'}}>Sign in</Link></p></div></div></section>
+  return <section className="section section-soft"><div className="container"><div className="form-shell"><div className="eyebrow">Investor registration</div><h2>Begin your investment journey.</h2><p>Register your investor profile and access your account dashboard.</p><form className="form-grid" onSubmit={submit}><label>Full name<input name="fullName" type="text" placeholder="Your full name" autoComplete="name" required/></label><label>Email address<input name="email" type="email" placeholder="you@example.com" autoComplete="email" required/></label><label>Create password<input name="password" type="password" minLength={8} autoComplete="new-password" placeholder="At least 8 characters" required/></label><label>Phone number<input name="phone" type="tel" placeholder="+254 ..." autoComplete="tel" required/></label><label>Country of residence<input name="country" type="text" placeholder="Country" autoComplete="country-name" required/></label><label>Preferred account currency<select name="currency" defaultValue="KES"><option value="KES">KES</option><option value="USD">USD</option><option value="GBP">GBP</option></select></label><label className="terms-check"><input type="checkbox" name="terms" required/><span>I have read and agree to the <Link href="/terms">Terms &amp; Conditions</Link> and acknowledge the investment risk disclosures.</span></label><button type="submit" className="button button-gold" disabled={busy}>{busy?"Submitting…":"Submit registration details"}</button></form>{error&&<p role="alert" className="form-note">{error}</p>}{message&&<p role="status" className="success-message">{message}</p>}<p className="form-note">Already have an account? <Link href="/login" style={{color:'#987842'}}>Sign in</Link></p></div></div></section>
 }
