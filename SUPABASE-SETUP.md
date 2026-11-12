@@ -49,3 +49,10 @@ After saving the Vercel environment variables and running the SQL migration, red
 ## Scope of this connection
 
 This phase connects Supabase Auth and basic investor profiles. Deposits, withdrawals, investment allocations, distributions, investor balances, admin roles, admin records, website settings and market data have not yet been migrated from browser storage. The investor dashboard therefore does not display browser-stored figures as live financial balances, and deposit/withdrawal actions remain unavailable. Payment integration is a separate next phase and must remain disabled until regulatory and provider approvals are confirmed.
+
+
+## Additional financial, support and security migrations
+
+Use the exact order and security instructions in `SECURITY-AND-SETUP.md`. In particular, run migrations 003, 004 and 005 after the already completed investor profile and referral migrations. Do not run the older alternate `202611110002_financial_and_admin_foundation.sql` on this migration path.
+
+The admin workspace requires Supabase Auth, an active administrator membership and verified TOTP multi-factor authentication. Supa Admin-only financial-rate and role-management operations are also checked by database functions.
