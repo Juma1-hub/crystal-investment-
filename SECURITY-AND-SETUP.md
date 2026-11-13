@@ -9,7 +9,6 @@ Apply SQL in this order in the Supabase SQL Editor:
 3. `202611110003_central_backend_and_referral_admin.sql`.
 4. `202611120004_interest_support_and_admin_controls.sql`.
 5. `202611120005_contact_admin_security.sql`.
-6. `202611130006_financial_ledger_and_account_balances.sql` (includes a targeted drop/recreate of the existing `admin_list_investment_allocations()` RPC because its OUT-column return type changed).
 
 **Do not run `202611110002_financial_and_admin_foundation.sql` on top of this migration path.** It is an older alternate schema with overlapping table names and a different admin-membership model. Applying it can create schema conflicts.
 
